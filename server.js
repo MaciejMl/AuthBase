@@ -5,6 +5,7 @@ const hbs = require('express-handlebars');
 const passport = require('passport');
 const session = require('express-session');
 const passportConfig = require('./config/passport');
+require('dotenv').config();
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.engine(
 );
 app.set('view engine', '.hbs');
 
-app.use(session({ secret: 'myFirstAuth' }));
+app.use(session({ secret: process.env.SESSION_SECRET }));
 
 app.use(passport.initialize());
 app.use(passport.session());

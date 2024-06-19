@@ -9,13 +9,12 @@ const isLogged = (req, res, next) => {
   }
 };
 
-router.get('/logout', function (req, res) {
+router.get('/logout', (req, res) => {
   req.logout();
   res.redirect('/');
 });
 
 router.get('/logged', isLogged, (req, res) => {
-  console.log(req.user);
   res.render('logged', { user: req.user });
 });
 
